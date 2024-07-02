@@ -4,6 +4,7 @@ const userSchema = new mongoose.Schema(
   firstName: {
       type: String,
       required: [true, "firstName is require"]
+      trim: true
   },
   lasttName: {
       type: String,
