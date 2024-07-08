@@ -1,109 +1,37 @@
-const express = require("express")
-const app = express()
+const express = require("express");
+const dotenv = require("dotenv");
+const userRouter = require("./routes/userRouters");
+const postRouter = require("./routes/postRouters");
+const commentRouter = require("./routes/postRouters");
+const categoryRouter = require("./routes/postRouters");
 
-require("dotenv").config()
-require("./Config/dbConnect")
 
 
 
-//Routes
-//------User route----------
-//Register
 
-app.post("/api/v1/user/register", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "User register successfully"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
+require("dotenv").config();
+require("./Config/dbConnect");
+//
+const app = express();
 
-app.post("/api/v1/user/login", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "login successfully"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
 
-app.get("/api/v1/user/:id", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "single user"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
+//middleware
+//routes
+//-----User-----
 
-app.get("/api/v1/users", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "All users"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
 
-app.put("/api/v1/user/:id", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "single user"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
-
-app.put("/api/v1/users", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "All users"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
-
-app.delete("/api/v1/user/:Id", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "Single user"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
-
-app.delete("/api/v1/users", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "All user"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/user", postRouter);
+app.use("/api/v1/user", commentRouter);
+app.use("/api/v1/user", categoryRouter);
 
 
 
 
 
 
-
+//Error handlers middleware
+//Listen to server
 
 
 
