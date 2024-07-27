@@ -9,4 +9,4 @@ const dbConnect = async()=>{
   }
 }
 
-dbConnect()
+dbConnect();

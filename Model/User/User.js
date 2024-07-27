@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "firstName is require"]
   },
-  lasttName: {
+  lastName: {
       type: String,
       required: [true, "lastName is require"]
   },
@@ -37,7 +37,7 @@ role: {
     type: String,
     enum: ["Admin", "Guest", "Editor"],
 },
-viewedBy: {
+viewers: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
 },
@@ -60,11 +60,29 @@ post: [
     ref: "post",
 },
 ],
+blocked: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
+],
+plan: [
+    {
+        type: String,
+        enum: ["Free", "Premium", "Pro"],
+        default: "Free",
+    },
+],
+userAward: {
+    type: String,
+    enum: ["Bronze", "Silver", "Gold"],
+    default: "Bronze",
+},
 },
 {
     timestamps: true,
 }
 );
 //compile the user model
-const user = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;

@@ -1,28 +1,6 @@
 const express = require("express"); 
 const commentRouter = express.Router();
 
-//----user----
-commentRouter.post("/register", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "User register successfully"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
-
-postRouter.post("/login", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "login successfully"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
 commentRouter.get("/", async (req,res)=>{
   try {
     res.json({
@@ -45,7 +23,7 @@ commentRouter.get("/profile/:id", async (req,res)=>{
   }
 })
 
-comment.put("/profile/:id", async (req,res)=>{
+commentRouter.put("/profile/:id", async (req,res)=>{
   try {
     res.json({
       status: "success",
@@ -66,4 +44,4 @@ commentRouter.delete("/profile/:Id", async (req,res)=>{
   }
 })
 
-module.export = commentRouter
+module.exports = commentRouter

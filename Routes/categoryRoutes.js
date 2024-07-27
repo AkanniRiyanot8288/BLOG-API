@@ -64,4 +64,4 @@ categoryRouter.delete("/profile/:Id", async (req,res)=>{
   }
 })
 
-module.export = categoryRouter
+module.exports = categoryRouter

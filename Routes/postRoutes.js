@@ -64,4 +64,4 @@ postRouter.delete("/profile/:Id", async (req,res)=>{
   }
 })
 
-module.export = postRouter
+module.exports = postRouter
