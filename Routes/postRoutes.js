@@ -1,67 +1,28 @@
-const express = require("express"); 
+const express = require("express");
+const { createPostCtrl, deletePostCtrl, singlePostCtrl, updatePost, fetchallPosts, toggleLikesCtrl, toggleDisLikesCtrl, postDetailsCtrl } = require("../Controller/postCtrl");
+const isLogin = require("../middlewares/isLogin");
+const storage = require("../config/cloudinary");
+const multer = require("multer");
 const postRouter = express.Router();
 
-//----user----
-postRouter.post("/register", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "User register successfully"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
+//instance of multer
+const upload = multer({ storage });
 
-postRouter.post("/login", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "login successfully"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
-postRouter.get("/", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "single user"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
-postRouter.get("/profile/:id", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "All users"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
-postRouter.put("/profile/:id", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "single user"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
-postRouter.delete("/profile/:Id", async (req,res)=>{
-  try {
-    res.json({
-      status: "success",
-      data: "Single user"
-    })
-  } catch (error) {
-    res.json(error.message)
-  }
-})
+postRouter.post("/", isLogin, createPostCtrl);
 
-module.exports = postRouter
+// postRouter.get("/:id", isLogin, singlePostCtrl);
+
+postRouter.get("/",isLogin,fetchallPosts);
+
+postRouter.get("/likes/:id",isLogin, toggleLikesCtrl);
+
+postRouter.get("/dislikes/:id",isLogin, toggleDisLikesCtrl);
+
+postRouter.get("/:id",isLogin, postDetailsCtrl);
+
+postRouter.delete("/:id", isLogin, deletePostCtrl);
+
+postRouter.put("/:id", isLogin, upload.single("photo"), updatePost);
+
+
+module.exports = postRouter;

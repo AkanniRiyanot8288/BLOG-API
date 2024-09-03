@@ -1,9 +1,9 @@
-const mongoose = required("mongoose");
+const mongoose = require("mongoose");
 // schema is use to create comment table
 const commentSchema = new mongoose.Schema(
   {
     post: {
-      type: mongoose.Schema.Type.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "post",
       required: [true, "post is required"],
     },

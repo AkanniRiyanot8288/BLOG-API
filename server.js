@@ -2,7 +2,7 @@ const express = require("express");
 require("dotenv").config();
 require("./Config/dbConnect");
 const userRouter = require("./Routes/userRoutes");
-const postRouter = require("./routes/postRoutes");
+const postRouter = require("./Routes/postRoutes");
 const commentRouter = require("./Routes/commentRoutes");
 const categoryRouter = require("./Routes/categoryRoutes");
 const globalErrHandler = require("./middlewares/globaErrHandler");
@@ -38,6 +38,7 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/post", postRouter);
 app.use("/api/v1/comment", commentRouter);
 app.use("/api/v1/category", categoryRouter);
+
 
 
 //Error handlers middleware
