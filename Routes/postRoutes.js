@@ -1,7 +1,7 @@
 const express = require("express");
 const { createPostCtrl, deletePostCtrl, singlePostCtrl, updatePost, fetchallPosts, toggleLikesCtrl, toggleDisLikesCtrl, postDetailsCtrl } = require("../Controller/postCtrl");
 const isLogin = require("../middlewares/isLogin");
-const storage = require("../config/cloudinary");
+const storage = require("../Config/cloudinary");
 const multer = require("multer");
 const postRouter = express.Router();
 
