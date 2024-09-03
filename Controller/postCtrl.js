@@ -1,6 +1,6 @@
 const Post = require("../Model/Post/Post");
 const appErr = require("../utils/appErr");
-const User = require("../model/User/User");
+const User = require("../Model/User/User");
 
 // 
 const createPostCtrl = async (req, res,next) => {
